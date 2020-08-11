@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
+import { initVideo, version, initFaceApiAndUserMedia } from 'face-auth-rnd';
 import './App.css';
 
 function App() {
+
+  const handleVideo = () => {
+    initVideo("videoPlaceholder");
+  }
+  // const handleVideo2 = () => {
+  //   initVideo("videoPlaceholder2");
+  // }
+
+  useEffect(()=>{
+      initFaceApiAndUserMedia('videoPlaceholder');
+  })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {version}
+
+      {/*{initFaceApiAndUserMedia('videoPlaceholder2')}*/}
+
+      <button onClick={handleVideo}>Start Video - myCanvasWrapper</button>
+      {/*<button onClick={handleVideo2}>Start Video - myCanvasWrapper 2</button>*/}
+
+      <div id="videoPlaceholder"></div>
+      <hr/>
+      {/*<div id="videoPlaceholder2"></div>*/}
     </div>
   );
 }
