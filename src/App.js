@@ -46,7 +46,7 @@ function App() {
                     {/*<div id="videoPlaceholder2"></div>*/}
                     <div id="videoPlaceholder"></div>
                     <button className="btn stop" onClick={stop}>stop</button>
-                    {version}
+                    <small>{version}</small>
                 </div>
             </div>
         </div>
