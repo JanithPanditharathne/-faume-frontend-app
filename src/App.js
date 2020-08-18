@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {initVideo, version, initFaceApiAndUserMedia, clear} from 'face-auth-rnd';
 import './App.css';
-import 'face-auth-rnd/dist/main.css'
+import 'face-auth-rnd/dist/face-auth-rnd.css'
 
 function App() {
 
