@@ -3,11 +3,20 @@ import {initVideo, version, initFaceApiAndUserMedia, clear} from 'face-auth-rnd'
 import './App.css';
 import 'face-auth-rnd/dist/face-auth-rnd.css'
 
-function App() {
+function App(props) {
+
+    let verificationId = "";
+
+    useEffect(() => {
+        const search = window.location.search;
+        const params = new URLSearchParams(search);
+        verificationId = params.get("verificationId");
+        console.log(verificationId);
+    });
 
     const handleVideo = () => {
-        initVideo("videoPlaceholder");
-    }
+        initVideo("videoPlaceholder", verificationId);
+    };
     // const handleVideo2 = () => {
     //   initVideo("videoPlaceholder2");
     // }
