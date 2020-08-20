@@ -25,7 +25,7 @@ function App(props) {
     }
 
     useEffect(() => {
-        initFaceApiAndUserMedia('videoPlaceholder');
+        initFaceApiAndUserMedia('videoPlaceholder', verificationId);
         // initFaceApiAndUserMedia('videoPlaceholder2');
     })
     return (
