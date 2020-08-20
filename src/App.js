@@ -44,7 +44,7 @@ function App(props) {
                         Please verify using face authentication
                     </p>
 
-                    <button className="btn fa-btn" onClick={handleVideo}>AUTHENTICATE WITH FACE</button>
+                    <button className="btn fa-btn videoPlaceholder-btn" onClick={handleVideo}>AUTHENTICATE WITH FACE</button>
                     <p>
                         You are authorizing My Bank to get your facial data. Click <a href="#">here</a> to understand how we use your data.. View our privacy notice.
                     </p>
