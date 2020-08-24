@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {initVideo, version, initFaceApiAndUserMedia, clear} from 'face-auth-rnd';
 import './App.css';
 import 'face-auth-rnd/dist/face-auth-rnd.css'
 
-function App(props) {
+function App() {
 
+    const [valid, setValid] = useState(false);
     let verificationId = "";
 
     useEffect(() => {
@@ -12,22 +13,21 @@ function App(props) {
         const params = new URLSearchParams(search);
         verificationId = params.get("verificationId");
         console.log(verificationId);
-    });
+        initFaceApiAndUserMedia('videoPlaceholder', verificationId, onValidationComplete);
+    },[]);
 
     const handleVideo = () => {
         initVideo("videoPlaceholder", verificationId);
     };
-    // const handleVideo2 = () => {
-    //   initVideo("videoPlaceholder2");
-    // }
-    const stop = () =>{
-        clear('videoPlaceholder');
+
+    const onValidationComplete = (valid) => {
+        setValid(valid);
     }
 
-    useEffect(() => {
-        initFaceApiAndUserMedia('videoPlaceholder', verificationId);
-        // initFaceApiAndUserMedia('videoPlaceholder2');
-    })
+    const stop = () =>{
+        clear('videoPlaceholder');
+    };
+
     return (
         <div className="faume-fe-wrapper">
             <div className="faume-fe-header">
@@ -44,7 +44,7 @@ function App(props) {
                         <li>Please verify using face authentication</li>
                     </ul>
 
-                    <button className="faume-fe-btn videoPlaceholder-btn" onClick={handleVideo}><span>AUTHENTICATE WITH FACE</span></button>
+                    <button className="faume-fe-btn videoPlaceholder-btn" onClick={handleVideo}  disabled={!valid}><span>AUTHENTICATE WITH FACE</span></button>
                     <p className="faume-fe-text-content">
                         You are authorizing My Bank to get your facial data. Click <a href="#">here</a> to understand how we use your data.. View our privacy notice.
                     </p>
