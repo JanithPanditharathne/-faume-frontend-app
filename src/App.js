@@ -19,9 +19,11 @@ function App() {
     const handleVideo = () => {
         initVideo("videoPlaceholder", verificationId);
     };
-    // const handleVideo2 = () => {
-    //   initVideo("videoPlaceholder2");
-    // }
+
+    const onValidationComplete = (valid) => {
+        setValid(valid);
+    }
+
     const stop = () =>{
         clear('videoPlaceholder');
     };
@@ -42,7 +44,7 @@ function App() {
                         <li>Please verify using face authentication</li>
                     </ul>
 
-                    <button className="faume-fe-btn videoPlaceholder-btn" onClick={handleVideo}><span>AUTHENTICATE WITH FACE</span></button>
+                    <button className="faume-fe-btn videoPlaceholder-btn" onClick={handleVideo}  disabled={!valid}><span>AUTHENTICATE WITH FACE</span></button>
                     <p className="faume-fe-text-content">
                         You are authorizing My Bank to get your facial data. Click <a href="#">here</a> to understand how we use your data.. View our privacy notice.
                     </p>
